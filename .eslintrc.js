@@ -4,5 +4,11 @@ module.exports = {
         "react",
         "jsx-a11y",
         "import"
-    ]
+    ],
+    rules: {
+      "func-names": 0
+    },
+    "env": {
+      mocha: true
+    }
 };

@@ -1,6 +1,6 @@
 # eslint-plugin-react-redux
 
-Enforcing best proctices for react-redux
+Enforcing best practices for react-redux
 
 ## Installation
 
@@ -44,8 +44,3 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * Fill in provided rules here
-
-
-
-
-

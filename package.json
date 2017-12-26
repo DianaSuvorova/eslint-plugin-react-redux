@@ -12,7 +12,9 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint ./",
-    "test": "npm run lint && mocha tests --recursive"
+    "test": "npm run lint && mocha tests --recursive",
+    "test-single": "mocha tests/lib/rules/connect-prefer-named-parameters",
+    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/connect-prefer-named-parameters"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.0",

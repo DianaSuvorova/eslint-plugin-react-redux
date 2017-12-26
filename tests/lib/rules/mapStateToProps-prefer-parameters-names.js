@@ -15,11 +15,11 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
   valid: [
-    'mapStateToProps(state, ownProps)',
-    'mapStateToProps(state)',
+    'mapStateToProps(state, ownProps)(Component)',
+    'mapStateToProps(state)(Component)',
   ],
   invalid: [
-    'mapStateToProps(anyOtherName)',
-    'mapStateToProps(anyOtherName, anyOtherName)',
+    'mapStateToProps(anyOtherName)(Component)',
+    'mapStateToProps(anyOtherName, anyOtherName)(Component)',
   ],
 });

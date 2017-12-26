@@ -15,11 +15,11 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('prefer-explicit-mapDispatchToProps', rule, {
   valid: [
-    'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)',
-    'connect(mapStateToProps, mapDispatchToProps)',
+    'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
+    'connect(mapStateToProps, mapDispatchToProps)(Component)',
   ],
   invalid: [
-    'connect(mapStateToProps, null)',
-    'connect(mapStateToProps, undefined)',
+    'connect(mapStateToProps, null)(Component)',
+    'connect(mapStateToProps, undefined)(Component)',
   ],
 });
