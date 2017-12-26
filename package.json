@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-react-redux",
   "version": "0.0.0",
-  "description": "Enforcing best proctices for react-redux",
+  "description": "Enforcing best practices for react-redux",
   "keywords": [
     "eslint",
     "eslintplugin",
