@@ -15,8 +15,10 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('connect-prefer-named-parameters', rule, {
   valid: [
+    'connect(null, mapDispatchToProps)(TodoApp)',
     'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
     'connect(mapStateToProps, mapDispatchToProps)(Component)',
+    'connect()(TodoApp)',
   ],
   invalid: [{
     code: 'connect(() => {}, () => {}, mergeProps, options)(Component)',
@@ -36,6 +38,12 @@ ruleTester.run('connect-prefer-named-parameters', rule, {
         message: 'Connect function parameter #1 should be named mapDispatchToProps',
       },
     ],
-  },
-  ],
+  }, {
+    code: 'connect(state => state)(TodoApp)',
+    errors: [
+      {
+        message: 'Connect function parameter #0 should be named mapStateToProps',
+      },
+    ],
+  }],
 });

@@ -36,11 +36,11 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "react-redux/rule-name": 2
+        "react-redux/connect-prefer-named-parameters": 2
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
+* [react-redux/connect-prefer-named-parameters](docs/rules/connect-prefer-named-parameters.md) Enforces that all connect parameters have specific names.

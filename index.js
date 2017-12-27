@@ -6,7 +6,7 @@ module.exports = {
   rules,
   configs: {
     recommended: {
-      rules,
+      'react-redux/connect-prefer-named-parameters': 2,
     },
     all: {
       rules,
