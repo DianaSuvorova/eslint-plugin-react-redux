@@ -13,9 +13,13 @@
   "scripts": {
     "lint": "eslint ./",
     "test": "npm run lint && mocha tests --recursive",
-    "test-single": "mocha tests/lib/rules/connect-prefer-named-parameters",
-    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/connect-prefer-named-parameters"
+    "test-single": "mocha tests/lib/rules/mapStateToProps-prefer-parameters-names",
+    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/mapStateToProps-prefer-parameters-names"
   },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/diana.suvorova/eslint-plugin-react-redux"
+},
   "devDependencies": {
     "babel-eslint": "^8.1.0",
     "eslint": "^4.14.0",
