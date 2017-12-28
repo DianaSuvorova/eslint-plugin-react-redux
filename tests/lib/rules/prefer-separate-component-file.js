@@ -1,7 +1,7 @@
 require('babel-eslint');
 
 const rule = require('../../../lib/rules/prefer-separate-component-file');
-const { RuleTester } = require('eslint');
+const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
   ecmaVersion: 6,

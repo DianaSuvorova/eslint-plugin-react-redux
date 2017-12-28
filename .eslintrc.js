@@ -7,7 +7,8 @@ module.exports = {
     ],
     rules: {
       "func-names": 0,
-      "global-require": 0
+      "global-require": 0,
+      "prefer-destructuring": 0
     },
     "env": {
       mocha: true

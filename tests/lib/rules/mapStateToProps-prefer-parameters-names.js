@@ -1,7 +1,7 @@
 require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapStateToProps-prefer-parameters-names');
-const { RuleTester } = require('eslint');
+const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
   ecmaVersion: 6,

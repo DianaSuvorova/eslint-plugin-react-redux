@@ -1,7 +1,7 @@
 require('babel-eslint');
 
 const rule = require('../../../lib/rules/connect-prefer-minimum-two-arguments');
-const { RuleTester } = require('eslint');
+const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
   ecmaVersion: 6,
