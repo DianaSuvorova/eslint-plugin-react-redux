@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react-redux",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Enforcing best practices for react-redux",
   "keywords": [
     "eslint",
@@ -14,11 +14,12 @@
     "lint": "eslint ./",
     "test": "npm run lint && mocha tests --recursive",
     "test-single": "mocha tests/lib/rules/prefer-separate-component-file",
-    "debug-test": "mocha --debug-brk --inspect tests/index.js"
+    "debug-test": "mocha --debug-brk --inspect tests/index.js",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diana.suvorova/eslint-plugin-react-redux"
+    "url": "https://github.com/DianaSuvorova/eslint-plugin-react-redux"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.0",
