@@ -8,7 +8,7 @@ This rule enforces that all of the provided parameters should follow the above n
 
 ## Rule details
 
-The following pattern is considered warnings:
+The following pattern is considered incorrect:
 
 ```js
 const mapStateToProps = (anyOtherName) => {}

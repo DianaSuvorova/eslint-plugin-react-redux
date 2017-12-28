@@ -8,7 +8,7 @@ This rule enforces that Second argument is provided explicitly.
 
 ## Rule details
 
-The following pattern is considered warnings:
+The following pattern is considered incorrect:
 
 ```js
 connect(mapStateToProps, null, mergeProps)(Component)

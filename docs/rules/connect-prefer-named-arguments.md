@@ -10,7 +10,7 @@ This rule enforces that all of the provided parameters should follow the above n
 
 ## Rule details
 
-The following patterns are considered warnings:
+The following patterns are considered incorrect:
 
 ```js
 connect(mapStateToProps, actionCreators)(TodoApp)
@@ -23,7 +23,7 @@ connect(state => state)(TodoApp)
 The following patterns are considered correct:
 
 ```js
-connect(mapStateToProps, actionCreators, mergeProps)(TodoApp)
+connect(mapStateToProps, mapDispatchToProps, mergeProps)(TodoApp)
 ```
 
 ```js

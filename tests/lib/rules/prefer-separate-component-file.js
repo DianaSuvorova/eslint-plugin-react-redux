@@ -19,9 +19,16 @@ ruleTester.run('prefer-separate-component-file', rule, {
       connect(mapStateToProps, mapDispatchToProps)(Component)`,
     `const Component = require('./component')
      connect(mapStateToProps, mapDispatchToProps)(Component)`,
+    `import {Component} from './component';
+       connect(mapStateToProps, mapDispatchToProps)(Component)`,
   ],
-  invalid: [
-    ` const Component = () => {};
-      connect(mapStateToProps, null)(Component)`,
-  ],
+  invalid: [{
+    code: `const Component = () => {};
+          connect(mapStateToProps, null)(Component)`,
+    errors: [
+      {
+        message: 'Connected component should be defined in a separate file.',
+      },
+    ],
+  }],
 });
