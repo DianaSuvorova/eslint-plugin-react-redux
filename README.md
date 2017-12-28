@@ -36,7 +36,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "react-redux/connect-prefer-named-parameters": 2
+        "react-redux/connect-prefer-named-arguments": 2
     }
 }
 ```
