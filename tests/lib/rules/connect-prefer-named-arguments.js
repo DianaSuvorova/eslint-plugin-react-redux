@@ -1,6 +1,6 @@
 require('babel-eslint');
 
-const rule = require('../../../lib/rules/connect-prefer-named-parameters');
+const rule = require('../../../lib/rules/connect-prefer-named-arguments');
 const { RuleTester } = require('eslint');
 
 const parserOptions = {
@@ -13,9 +13,9 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 
-ruleTester.run('connect-prefer-named-parameters', rule, {
+ruleTester.run('connect-prefer-named-arguments', rule, {
   valid: [
-    'connect(null, mapDispatchToProps)(TodoApp)',
+    'export default connect(null, mapDispatchToProps)(TodoApp)',
     'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
     'connect(mapStateToProps, mapDispatchToProps)(Component)',
     'connect()(TodoApp)',
@@ -24,25 +24,25 @@ ruleTester.run('connect-prefer-named-parameters', rule, {
     code: 'connect(() => {}, () => {}, mergeProps, options)(Component)',
     errors: [
       {
-        message: 'Connect function parameter #0 should be named mapStateToProps',
+        message: 'Connect function argument #0 should be named mapStateToProps',
       }, {
-        message: 'Connect function parameter #1 should be named mapDispatchToProps',
+        message: 'Connect function argument #1 should be named mapDispatchToProps',
       },
     ],
   }, {
     code: 'connect({}, {})(Component)',
     errors: [
       {
-        message: 'Connect function parameter #0 should be named mapStateToProps',
+        message: 'Connect function argument #0 should be named mapStateToProps',
       }, {
-        message: 'Connect function parameter #1 should be named mapDispatchToProps',
+        message: 'Connect function argument #1 should be named mapDispatchToProps',
       },
     ],
   }, {
     code: 'connect(state => state)(TodoApp)',
     errors: [
       {
-        message: 'Connect function parameter #0 should be named mapStateToProps',
+        message: 'Connect function argument #0 should be named mapStateToProps',
       },
     ],
   }],

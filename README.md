@@ -43,4 +43,12 @@ Then configure the rules you want to use under the rules section.
 
 ## Supported Rules
 
-* [react-redux/connect-prefer-named-parameters](docs/rules/connect-prefer-named-parameters.md) Enforces that all connect parameters have specific names.
+'react-redux/connect-prefer-minimum-two-arguments': 0,
+'react-redux/connect-prefer-named-parameters': 2,
+'react-redux/mapStateToProps-prefer-parameters-names': 2,
+'react-redux/mapDispatchToProps-prefer-parameters-names': 2,
+
+* [react-redux/connect-prefer-minimum-two-arguments](docs/rules/connect-prefer-minimum-two-arguments.md) Enforces that connect function has at least 2 arguments.
+* [react-redux/connect-prefer-named-arguments](docs/rules/connect-prefer-named-arguments.md) Enforces that all connect arguments have specific names.
+* [react-redux/mapStateToProps-prefer-parameters-names](docs/rules/mapStateToProps-prefer-parameters-names.md) Enforces that all mapStateToProps parameters have specific names.
+* [react-redux/mapDispatchToProps-prefer-parameters-names](docs/rules/mapDispatchToProps-prefer-parameters-names.md) Enforces that all mapDispatchToProps parameters have specific names.

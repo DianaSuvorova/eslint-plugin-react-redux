@@ -18,8 +18,20 @@ ruleTester.run('prefer-explicit-mapDispatchToProps', rule, {
     'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
     'connect(mapStateToProps, mapDispatchToProps)(Component)',
   ],
-  invalid: [
-    'connect(mapStateToProps, null)(Component)',
-    'connect(mapStateToProps, undefined)(Component)',
+  invalid: [{
+    code: 'connect(mapStateToProps, null, mergeProps)(Component)',
+    errors: [
+      {
+        message: 'Connect function should have explicit mapDispatchToProps argument',
+      },
+    ],
+  }, {
+    code: 'connect(mapStateToProps, undefined)(Component)',
+    errors: [
+      {
+        message: 'Connect function should have explicit mapDispatchToProps argument',
+      },
+    ],
+  },
   ],
 });

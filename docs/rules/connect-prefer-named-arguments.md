@@ -1,4 +1,4 @@
-#  Enforces that all connect parameters have specific names. (react-redux/connect-prefer-named-parameters)
+#  Enforces that all connect arguments have specific names. (react-redux/connect-prefer-named-arguments)
 
 [react-redux connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) function has 4 optional arguments:
 * mapStateToProps

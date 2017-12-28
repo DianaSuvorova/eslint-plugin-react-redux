@@ -1,4 +1,4 @@
-#  Enforces that all mapStateToProps parameters have specific names. (react-redux/mapStateToProps-prefer-named-parameters)
+#  Enforces that all mapDispatchToProps parameters have specific names. (react-redux/mapDispatchToProps-prefer-named-parameters)
 
 [react-redux mapStateToProps](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) function has 2 optional arguments:
 * state
@@ -11,15 +11,19 @@ This rule enforces that all of the provided parameters should follow the above n
 The following pattern is considered warnings:
 
 ```js
-const mapStateToProps = (anyOtherName) => {}
+const mapDispatchToProps = (anyOtherName) => {}
 ```
 
 The following patterns are considered correct:
 
 ```js
-const mapStateToProps = (state, ownProps) => {}
+const mapDispatchToProps = () => {}
 ```
 
 ```js
-const mapStateToProps = (state) => {}
+const mapDispatchToProps(dispatch, ownProps) => {}
+```
+
+```js
+const mapDispatchToProps(dispatch) => {}
 ```
