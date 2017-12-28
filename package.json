@@ -14,7 +14,7 @@
     "lint": "eslint ./",
     "test": "npm run lint && mocha tests --recursive",
     "test-single": "mocha tests/lib/rules/prefer-separate-component-file",
-    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/prefer-separate-component-file"
+    "debug-test": "mocha --debug-brk --inspect tests/index.js"
   },
   "repository": {
   "type": "git",

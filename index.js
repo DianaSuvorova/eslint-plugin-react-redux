@@ -6,18 +6,31 @@ const rules = {
   'prefer-separate-component-file': require('./lib/rules/prefer-separate-component-file'),
 };
 
+function configureAsError() {
+  const result = {};
+  Object.keys(rules).forEach((key) => {
+    result[`react-redux/${key}`] = 2;
+  });
+  return result;
+}
+
+const activeRulesConfig = configureAsError();
+
 module.exports = {
+  deprecatedRules: [],
   rules,
   configs: {
     recommended: {
-      'react-redux/connect-prefer-minimum-two-arguments': 0,
-      'react-redux/connect-prefer-named-arguments': 2,
-      'react-redux/mapStateToProps-prefer-parameters-names': 2,
-      'react-redux/mapDispatchToProps-prefer-parameters-names': 2,
-      'prefer-separate-component-file/mapDispatchToProps-prefer-parameters-names': 1,
+      rules: {
+        'react-redux/connect-prefer-minimum-two-arguments': 0,
+        'react-redux/connect-prefer-named-arguments': 2,
+        'react-redux/mapStateToProps-prefer-parameters-names': 2,
+        'react-redux/mapDispatchToProps-prefer-parameters-names': 2,
+        'react-redux/prefer-separate-component-file': 1,
+      },
     },
     all: {
-      rules,
+      rules: activeRulesConfig,
     },
   },
 };
