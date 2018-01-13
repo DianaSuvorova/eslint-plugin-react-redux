@@ -13,8 +13,8 @@
   "scripts": {
     "lint": "eslint ./",
     "test": "npm run lint && mocha tests --recursive",
-    "test-single": "mocha tests/lib/rules/prefer-separate-component-file",
-    "debug-test": "mocha --debug-brk --inspect tests/index.js",
+    "test-single": "mocha tests/lib/rules/mapDispatchToProps-prefer-object",
+    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/mapDispatchToProps-prefer-object",
     "semantic-release": "semantic-release"
   },
   "repository": {
