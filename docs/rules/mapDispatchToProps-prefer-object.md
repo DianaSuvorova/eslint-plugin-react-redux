@@ -1,4 +1,4 @@
-#  Enforces that map dispatchToProps returns an object. (react-redux/mapDispatchToProps-prefer-object)
+#  Enforces that mapDispatchToProps returns an object. (react-redux/mapDispatchToProps-prefer-object)
 
 In most cases one just needs to pass an object with an actions. And connect wraps it into dispatch function.
 
