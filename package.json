@@ -15,13 +15,16 @@
     "test": "npm run lint && mocha tests --recursive",
     "test-single": "mocha tests/lib/rules/prefer-separate-component-file",
     "debug-test": "mocha --debug-brk --inspect tests/index.js",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/DianaSuvorova/eslint-plugin-react-redux"
   },
   "devDependencies": {
+    "@commitlint/cli": "^6.0.2",
+    "@commitlint/config-conventional": "^6.0.2",
     "babel-eslint": "^8.1.0",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -32,6 +35,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "mocha": "^4.0.1",
     "semantic-release": "^11.0.2"
   },
