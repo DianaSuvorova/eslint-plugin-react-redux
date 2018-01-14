@@ -18,6 +18,7 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
     'const mapDispatchToProps = (dispatch, ownProps) => {}',
     'const mapDispatchToProps = (dispatch) => {}',
     'const mapDispatchToProps = (dispatch, ownProps, moreArgs) => {}',
+    'const mapDispatchToProps = {anAction: anAction}',
   ],
   invalid: [{
     code: 'const mapDispatchToProps = (anyOtherName) => {}',
