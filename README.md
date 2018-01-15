@@ -26,12 +26,15 @@ Add `react-redux` to the plugins section of your `.eslintrc` configuration file.
 {
     "plugins": [
         "react-redux"
+    ],
+    "extends": [
+        "plugin:react-redux/recommended"
     ]
 }
 ```
 
 
-Then configure the rules you want to use under the rules section.
+To configure individual rules:
 
 ```json
 {
