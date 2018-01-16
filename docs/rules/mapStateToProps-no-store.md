@@ -17,7 +17,7 @@ const mapStateToProps = state => {
       }
 ```
 
-The following patterns ire correct:
+The following patterns are correct:
 
 ```js
 const mapStateToProps = () => {}
