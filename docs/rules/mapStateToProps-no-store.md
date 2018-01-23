@@ -17,6 +17,10 @@ const mapStateToProps = state => {
       }
 ```
 
+```js
+connect((state) => state, null)(App)
+```
+
 The following patterns are correct:
 
 ```js
@@ -25,4 +29,8 @@ const mapStateToProps = () => {}
 
 ```js
 const mapStateToProps = (state) => {isActive: state.isActive}
+```
+
+```js
+connect((state) => ({isActive: state.isActive}), null)(App)
 ```
