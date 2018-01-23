@@ -4,7 +4,7 @@
 
 > If you do not supply your own mapDispatchToProps function or object full of action creators, the default mapDispatchToProps implementation just injects dispatch into your component’s props.
 
-This rule enforces that Second argument is provided explicitly.
+This rule enforces that the second argument is provided explicitly.
 
 ## Rule details
 
