@@ -15,6 +15,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-no-store', rule, {
   valid: [
+    'export default function observeStore(store) {return store;}',
     'export default connect(() => {})(Alert)',
     'export default connect(() => {})(Alert)',
     'export default connect(null, null)(Alert)',
