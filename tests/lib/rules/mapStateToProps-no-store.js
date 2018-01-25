@@ -15,6 +15,9 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-no-store', rule, {
   valid: [
+    'export default connect(() => {})(Alert)',
+    'export default connect(() => {})(Alert)',
+    'export default connect(null, null)(Alert)',
     'connect((state) => ({isActive: state.isActive}), null)(App)',
     `connect(
           (state) => {
@@ -41,6 +44,8 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     }`,
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {isActive: state.isActive}',
+    `const mapStateToProps = (state, ownProps) => {};
+      connect(mapStateToProps, null)(Alert);`,
   ],
   invalid: [{
     code: 'const mapStateToProps = (state) => state',
@@ -87,6 +92,14 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     ],
   }, {
     code: 'connect((state) => state, null)(App)',
+    errors: [
+      {
+        message: 'mapStateToProps should not return complete store object',
+      },
+    ],
+  }, {
+    code: `const mapStateToProps = (state, ownProps) => state;
+      connect(mapStateToProps, null)(Alert);`,
     errors: [
       {
         message: 'mapStateToProps should not return complete store object',
