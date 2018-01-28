@@ -16,10 +16,29 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('mapDispatchToProps-prefer-object', rule, {
   valid: [
     'const mapDispatchToProps = {anAction: anAction}',
-    'const mapDispatchToProps = () => {}',
-    'function mapDispatchToProps () {}',
+    `export default connect(
+      state => ({
+        productsList: state.Products.productsList,
+      }),
+      { fetchProducts }
+    )(Products);
+    `,
   ],
   invalid: [{
+    code: 'function mapDispatchToProps () {}',
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
+    code: 'const mapDispatchToProps = () => {}',
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
     code: `const mapDispatchToProps = (dispatch) => (
             {
                 requestFilteredItems: (client, keyword) => {
@@ -27,6 +46,56 @@ ruleTester.run('mapDispatchToProps-prefer-object', rule, {
                 }
             }
         )`,
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
+    code: `function mapDispatchToProps(dispatch) {
+              return { requestFilteredItems: (client, keyword) => {
+                dispatch(requestFilteredItems(client, keyword));
+              }
+            }
+        }`,
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
+    code: `const mapDispatchToProps = function(dispatch) {
+              return { requestFilteredItems: (client, keyword) => {
+                dispatch(requestFilteredItems(client, keyword));
+              }
+            }
+        }`,
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
+    code: `export default connect(
+              state => ({
+                productsList: state.Products.productsList,
+              }),
+              dispatch => dispatch(action())
+            )(Products);
+            `,
+    errors: [
+      {
+        message: 'mapDispatchToProps should return object',
+      },
+    ],
+  }, {
+    code: `export default connect(
+              state => ({
+                productsList: state.Products.productsList,
+              }),
+              function(dispatch){ return dispatch(action()) }
+            )(Products);
+            `,
     errors: [
       {
         message: 'mapDispatchToProps should return object',

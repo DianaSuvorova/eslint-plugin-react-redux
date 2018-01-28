@@ -13,8 +13,8 @@
   "scripts": {
     "lint": "eslint ./",
     "test": "npm run lint && mocha tests --recursive",
-    "test-single": "mocha tests/lib/rules/mapStateToProps-no-store",
-    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/mapStateToProps-no-store",
+    "test-single": "mocha tests/lib/rules/mapDispatchToProps-prefer-object",
+    "debug-test": "mocha --debug-brk --inspect tests/lib/rules/mapDispatchToProps-prefer-object",
     "semantic-release": "semantic-release",
     "commitmsg": "npm run test && commitlint -e $GIT_PARAMS"
   },
