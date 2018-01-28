@@ -14,6 +14,10 @@ The following pattern is considered incorrect:
 const mapDispatchToProps = (anyOtherName) => {}
 ```
 
+```js
+connect((state) => state, (anyOtherName) => {})(App)
+```
+
 The following patterns are considered correct:
 
 ```js
@@ -26,4 +30,8 @@ const mapDispatchToProps(dispatch, ownProps) => {}
 
 ```js
 const mapDispatchToProps(dispatch) => {}
+```
+
+```js
+connect((state) => state, (dispatch, ownProps, moreArgs) => {})(App)
 ```

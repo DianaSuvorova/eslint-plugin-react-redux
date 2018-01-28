@@ -19,6 +19,11 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
     'const mapDispatchToProps = (dispatch) => {}',
     'const mapDispatchToProps = (dispatch, ownProps, moreArgs) => {}',
     'const mapDispatchToProps = {anAction: anAction}',
+    'connect((state) => state, {anAction: anAction})(App)',
+    'connect(null, null)(App)',
+    'connect((state) => state, (dispatch, ownProps, moreArgs) => {})(App)',
+    'function mapDispatchToProps(dispatch, ownProps) {}',
+
   ],
   invalid: [{
     code: 'const mapDispatchToProps = (anyOtherName) => {}',
@@ -34,6 +39,20 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
         message: 'mapDispatchToProps function parameter #0 should be named dispatch',
       }, {
         message: 'mapDispatchToProps function parameter #1 should be named ownProps',
+      },
+    ],
+  }, {
+    code: 'function mapDispatchToProps(anyOtherName) {}',
+    errors: [
+      {
+        message: 'mapDispatchToProps function parameter #0 should be named dispatch',
+      },
+    ],
+  }, {
+    code: 'connect((state) => state, (anyOtherName) => {})(App)',
+    errors: [
+      {
+        message: 'mapDispatchToProps function parameter #0 should be named dispatch',
       },
     ],
   }],

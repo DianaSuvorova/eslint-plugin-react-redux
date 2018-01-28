@@ -18,6 +18,11 @@ ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {}',
     'const mapStateToProps = (state, ownProps, moreArgs) => {}',
+    'connect((state) => state, null)(App)',
+    'function mapStateToProps(state, ownProps) {}',
+    'connect({state}, null)(App)',
+    'const mapStateToProps = {}',
+    'connect(null, null)(App)',
   ],
   invalid: [{
     code: 'const mapStateToProps = (anyOtherName) => {}',
@@ -33,6 +38,13 @@ ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
         message: 'mapStateToProps function parameter #0 should be named state',
       }, {
         message: 'mapStateToProps function parameter #1 should be named ownProps',
+      },
+    ],
+  }, {
+    code: 'connect(function(anyOtherName) {}, null)(App)',
+    errors: [
+      {
+        message: 'mapStateToProps function parameter #0 should be named state',
       },
     ],
   }],
