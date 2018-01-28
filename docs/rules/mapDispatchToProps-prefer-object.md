@@ -10,21 +10,24 @@ In most cases one just needs to pass an object with an actions. And connect wrap
 The following pattern is considered incorrect:
 
 ```js
-const mapDispatchToProps = (dispatch) => (
-        {
-            requestFilteredItems: (keyword) => {
-                dispatch(requestFilteredItems(keyword));
-            }
-        }
-    )
+const mapDispatchToProps = (dispatch) => dispatch(action())
 ```
 
-The following patterns are considered correct:
+```js
+connect((state) => state, (dispatch) => dispatch(action()))(App)
+```
 
 ```js
 const mapDispatchToProps = () => {}
 ```
 
+The following patterns are considered correct:
+
+
 ```js
 const mapDispatchToProps = {anAction: anAction}
+```
+
+```js
+connect((state) => state, {anAction}))(App)
 ```
