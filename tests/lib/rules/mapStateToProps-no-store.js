@@ -20,6 +20,7 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     'export default connect(() => {})(Alert)',
     'export default connect(null, null)(Alert)',
     'connect((state) => ({isActive: state.isActive}), null)(App)',
+    'connect(null, null)(App)',
     `connect(
           (state) => {
               return {

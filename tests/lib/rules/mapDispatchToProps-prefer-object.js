@@ -23,6 +23,7 @@ ruleTester.run('mapDispatchToProps-prefer-object', rule, {
       { fetchProducts }
     )(Products);
     `,
+    'connect(null, null)(App)',
   ],
   invalid: [{
     code: 'function mapDispatchToProps () {}',

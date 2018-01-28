@@ -20,6 +20,7 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
     'const mapDispatchToProps = (dispatch, ownProps, moreArgs) => {}',
     'const mapDispatchToProps = {anAction: anAction}',
     'connect((state) => state, {anAction: anAction})(App)',
+    'connect(null, null)(App)',
     'connect((state) => state, (dispatch, ownProps, moreArgs) => {})(App)',
     'function mapDispatchToProps(dispatch, ownProps) {}',
 
