@@ -14,6 +14,10 @@ The following pattern is considered incorrect:
 const mapStateToProps = (anyOtherName) => {}
 ```
 
+```js
+connect(function(anyOtherName) {}, null)(App)
+```
+
 The following patterns are considered correct:
 
 ```js
@@ -22,4 +26,8 @@ const mapStateToProps = (state, ownProps) => {}
 
 ```js
 const mapStateToProps = (state) => {}
+```
+
+```js
+connect((state) => state, null)(App)
 ```
