@@ -15,6 +15,15 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-no-store', rule, {
   valid: [
+    ` const mapStateToProps = state => ({
+       ...getSomeStateFromASelector(state),
+       showDefaultHeader: showDefaultHeader(state),
+      });
+    `,
+    ` const mapStateToProps = state => ({
+        aField: getSomeStateFromASelector(state),
+      });
+    `,
     'export default function observeStore(store) {return store;}',
     'export default connect(() => {})(Alert)',
     'export default connect(() => {})(Alert)',
@@ -102,6 +111,20 @@ ruleTester.run('mapStateToProps-no-store', rule, {
   }, {
     code: `const mapStateToProps = (state, ownProps) => state;
       connect(mapStateToProps, null)(Alert);`,
+    errors: [
+      {
+        message: 'mapStateToProps should not return complete store object',
+      },
+    ],
+  }, {
+    code: 'const mapStateToProps = state => ({...state});',
+    errors: [
+      {
+        message: 'mapStateToProps should not return complete store object',
+      },
+    ],
+  }, {
+    code: 'connect((state) => ({...state}), null)(App)',
     errors: [
       {
         message: 'mapStateToProps should not return complete store object',

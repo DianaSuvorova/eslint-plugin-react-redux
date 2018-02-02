@@ -18,6 +18,10 @@ const mapStateToProps = state => {
 ```
 
 ```js
+const mapStateToProps = state => ({...state});
+```
+
+```js
 connect((state) => state, null)(App)
 ```
 
@@ -33,4 +37,15 @@ const mapStateToProps = (state) => {isActive: state.isActive}
 
 ```js
 connect((state) => ({isActive: state.isActive}), null)(App)
+```
+
+## Not supported use cases.
+
+Please note that the following use case although common is not supported due to the nature of static code analysis.
+
+The following would not warn:
+
+```js
+const getProps = (state) => state;
+const mapStateToProps = (state) => getProps(state);
 ```
