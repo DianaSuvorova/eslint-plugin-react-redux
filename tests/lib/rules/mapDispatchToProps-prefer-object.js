@@ -15,6 +15,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapDispatchToProps-prefer-object', rule, {
   valid: [
+    'const mapDispatchToProps = {...actions}',
     'const mapDispatchToProps = {anAction: anAction}',
     `export default connect(
       state => ({
