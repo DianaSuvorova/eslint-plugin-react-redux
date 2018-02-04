@@ -36,6 +36,10 @@ const mapStateToProps = (state) => {isActive: state.isActive}
 ```
 
 ```js
+const mapStateToProps = ({isActive}) => {isActive}
+```
+
+```js
 connect((state) => ({isActive: state.isActive}), null)(App)
 ```
 

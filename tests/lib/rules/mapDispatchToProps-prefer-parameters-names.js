@@ -16,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
   valid: [
     'const mapDispatchToProps = (dispatch, ownProps) => {}',
+    'const mapDispatchToProps = (dispatch, {prop1, prop2}) => {}',
     'const mapDispatchToProps = (dispatch) => {}',
     'const mapDispatchToProps = (dispatch, ownProps, moreArgs) => {}',
     'const mapDispatchToProps = {anAction: anAction}',

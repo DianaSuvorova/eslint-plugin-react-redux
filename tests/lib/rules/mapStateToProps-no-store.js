@@ -57,6 +57,12 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     'const mapStateToProps = (state) => {isActive: state.isActive}',
     `const mapStateToProps = (state, ownProps) => {};
       connect(mapStateToProps, null)(Alert);`,
+    `const mapStateToProps = ({ header }) => ({
+      isLoggedIn: header.user && header.user.isLoggedIn,
+    }); `,
+    'const mapStateToProps = ({header}, ownProps) => {header};',
+    'connect(({header}, ownProps) => {header})(App);',
+    'connect(({header}, {ownProp1}) => {header, ownProp1})(App);',
   ],
   invalid: [{
     code: 'const mapStateToProps = (state) => state',
