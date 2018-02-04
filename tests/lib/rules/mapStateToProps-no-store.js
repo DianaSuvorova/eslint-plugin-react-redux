@@ -62,6 +62,7 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     }); `,
     'const mapStateToProps = ({header}, ownProps) => {header};',
     'connect(({header}, ownProps) => {header})(App);',
+    'connect(({header}, {ownProp1}) => {header, ownProp1})(App);',
   ],
   invalid: [{
     code: 'const mapStateToProps = (state) => state',
