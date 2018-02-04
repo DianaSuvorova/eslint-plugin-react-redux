@@ -29,6 +29,10 @@ const mapDispatchToProps(dispatch, ownProps) => {}
 ```
 
 ```js
+const mapDispatchToProps(dispatch, {prop1, prop2}) => {}
+```
+
+```js
 const mapDispatchToProps(dispatch) => {}
 ```
 

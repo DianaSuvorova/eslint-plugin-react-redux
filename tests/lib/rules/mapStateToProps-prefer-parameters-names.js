@@ -15,6 +15,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
   valid: [
+    'const mapStateToProps = ({prop1, prop2}, {ownProp1, ownProp2}) => {}',
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {}',
     'const mapStateToProps = (state, ownProps, moreArgs) => {}',
@@ -23,6 +24,7 @@ ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
     'connect({state}, null)(App)',
     'const mapStateToProps = {}',
     'connect(null, null)(App)',
+    'const mapStateToProps = (state, ownProps) => {}',
   ],
   invalid: [{
     code: 'const mapStateToProps = (anyOtherName) => {}',

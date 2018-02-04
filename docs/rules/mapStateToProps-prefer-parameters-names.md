@@ -29,5 +29,9 @@ const mapStateToProps = (state) => {}
 ```
 
 ```js
+const mapStateToProps = ({isActive}) => {isActive}
+```
+
+```js
 connect((state) => state, null)(App)
 ```
