@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => ({anAction: dispatch(anAction())})
 
 >If a function is passed, it will be given dispatch as the first parameter. It’s up to you to return an object that somehow uses dispatch to bind action creators in your own way.
 
-Below use case, is likely not what you want but will not be enforced by this rule nor runtime react-redux check:
+Below use case is likely not what you want but will not be enforced by this rule nor runtime react-redux check:
 
 ```js
 const mapDispatchToProps = () => ({
@@ -78,7 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 ```
 
-#### mapDispatchToProps is equal or returns a variable
+#### mapDispatchToProps is equal to or returns a variable
 
 Note that if mapDispatchToProps is assigned a value of a variable there is no way for lint to know if the variable resolves to an object.
 
