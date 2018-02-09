@@ -1,6 +1,6 @@
 require('babel-eslint');
 
-const rule = require('../../../lib/rules/mapDispatchToProps-prefer-object');
+const rule = require('../../../lib/rules/mapDispatchToProps-returns-object');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
@@ -13,8 +13,11 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 
-ruleTester.run('mapDispatchToProps-prefer-object', rule, {
+ruleTester.run('mapDispatchToProps-returns-object', rule, {
   valid: [
+    'const mapDispatchToProps = {}',
+    'const mapDispatchToProps = null',
+    'const mapDispatchToProps = actionsMap',
     'const mapDispatchToProps = {...actions}',
     'const mapDispatchToProps = {anAction: anAction}',
     `export default connect(
@@ -24,7 +27,29 @@ ruleTester.run('mapDispatchToProps-prefer-object', rule, {
       { fetchProducts }
     )(Products);
     `,
+    'function mapDispatchToProps () {return {action}}',
+    `const mapDispatchToProps = (dispatch) => (
+            {
+                requestFilteredItems: (client, keyword) => {
+                    dispatch(requestFilteredItems(client, keyword));
+                }
+            }
+        )
+    `,
+    `const mapDispatchToProps = dispatch => ({
+      onDoSomething: () => dispatch(toSomethingElse())
+    });`,
+    `const mapDispatchToProps = function(dispatch) {
+          return { requestFilteredItems: (client, keyword) => {
+            dispatch(requestFilteredItems(client, keyword));
+          }
+        }
+    }`,
     'connect(null, null)(App)',
+    'function mapDispatchToProps () {return aThing}',
+    `function mapDispatchToProps(dispatch) {
+      return { actions: bindActionCreators(actionCreators, dispatch) }
+    }`,
   ],
   invalid: [{
     code: 'function mapDispatchToProps () {}',
@@ -35,43 +60,6 @@ ruleTester.run('mapDispatchToProps-prefer-object', rule, {
     ],
   }, {
     code: 'const mapDispatchToProps = () => {}',
-    errors: [
-      {
-        message: 'mapDispatchToProps should return object',
-      },
-    ],
-  }, {
-    code: `const mapDispatchToProps = (dispatch) => (
-            {
-                requestFilteredItems: (client, keyword) => {
-                    dispatch(requestFilteredItems(client, keyword));
-                }
-            }
-        )`,
-    errors: [
-      {
-        message: 'mapDispatchToProps should return object',
-      },
-    ],
-  }, {
-    code: `function mapDispatchToProps(dispatch) {
-              return { requestFilteredItems: (client, keyword) => {
-                dispatch(requestFilteredItems(client, keyword));
-              }
-            }
-        }`,
-    errors: [
-      {
-        message: 'mapDispatchToProps should return object',
-      },
-    ],
-  }, {
-    code: `const mapDispatchToProps = function(dispatch) {
-              return { requestFilteredItems: (client, keyword) => {
-                dispatch(requestFilteredItems(client, keyword));
-              }
-            }
-        }`,
     errors: [
       {
         message: 'mapDispatchToProps should return object',
