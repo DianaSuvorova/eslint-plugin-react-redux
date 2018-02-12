@@ -12,6 +12,9 @@ The following pattern is considered incorrect:
 const mapDispatchToProps = (dispatch) => ({
   action: () => dispatch(action())
 })
+
+// it should use equivalent shorthand wrapping instead:
+// const mapDispatchToProps = {action}
 ```
 
 ```js
@@ -23,6 +26,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 The following patterns are considered correct:
 
+
+```js
+const mapDispatchToProps = {action}
+```
 
 ```js
 const mapDispatchToProps = (dispatch) => ({
