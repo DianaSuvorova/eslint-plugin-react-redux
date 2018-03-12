@@ -161,6 +161,15 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
         message: errorMessage,
       },
     ],
+  }, {
+    code: `function mapStateToProps(state) {
+      return {a : {}};
+    }`,
+    errors: [
+      {
+        message: errorMessage,
+      },
+    ],
   },
   ],
 });
