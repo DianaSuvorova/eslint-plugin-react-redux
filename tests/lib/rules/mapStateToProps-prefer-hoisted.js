@@ -11,7 +11,7 @@ const parserOptions = {
   },
 };
 
-const errorMessage = 'constant arrays, and objects should be initialized outside of mapStateToProps';
+const errorMessage = 'constant arrays and objects should be initialized outside of mapStateToProps';
 
 const ruleTester = new RuleTester({ parserOptions });
 
@@ -164,6 +164,18 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
   }, {
     code: `function mapStateToProps(state) {
       return {a : {}};
+    }`,
+    errors: [
+      {
+        message: errorMessage,
+      },
+    ],
+  }, {
+    code: `function mapStateToProps(state) {
+      return {
+        aProp: state.aProp,
+        aConstProp: [1, 2, 3]
+      };
     }`,
     errors: [
       {

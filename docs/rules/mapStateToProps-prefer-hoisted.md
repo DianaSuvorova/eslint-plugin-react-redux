@@ -51,7 +51,9 @@ const mapStateToProps = state => {
 ```js
 const mapStateToProps = state => ({
   user: state.user,
-  list: [1, 2, state.count]
+  // this is still a bad design because the list prop will be considered
+  // updated on every store change but the rule will not flag this.
+  list: [1, 2, state.count] 
 });
 ```
 
