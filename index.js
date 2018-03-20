@@ -5,6 +5,7 @@ const rules = {
   'mapDispatchToProps-returns-object': require('./lib/rules/mapDispatchToProps-returns-object'),
   'mapDispatchToProps-prefer-parameters-names': require('./lib/rules/mapDispatchToProps-prefer-parameters-names'),
   'mapStateToProps-no-store': require('./lib/rules/mapStateToProps-no-store'),
+  'mapStateToProps-prefer-hoisted': require('./lib/rules/mapStateToProps-prefer-hoisted'),
   'mapStateToProps-prefer-parameters-names': require('./lib/rules/mapStateToProps-prefer-parameters-names'),
   'prefer-separate-component-file': require('./lib/rules/prefer-separate-component-file'),
 };
@@ -31,6 +32,7 @@ module.exports = {
         'react-redux/mapDispatchToProps-prefer-shorthand': 2,
         'react-redux/mapDispatchToProps-returns-object': 2,
         'react-redux/mapStateToProps-no-store': 2,
+        'react-redux/mapStateToProps-prefer-hoisted': 2,
         'react-redux/mapStateToProps-prefer-parameters-names': 2,
         'react-redux/prefer-separate-component-file': 1,
       },

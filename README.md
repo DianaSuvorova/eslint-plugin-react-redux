@@ -51,5 +51,6 @@ To configure individual rules:
 * [react-redux/mapDispatchToProps-prefer-object](docs/rules/mapDispatchToProps-prefer-object.md) Enforces that mapDispatchToProps returns an object.
 * [react-redux/mapDispatchToProps-prefer-parameters-names](docs/rules/mapDispatchToProps-prefer-parameters-names.md)  Enforces that all mapDispatchToProps parameters have specific names.
 * [react-redux/mapStateToProps-no-store](docs/rules/mapStateToProps-no-store.md) Prohibits binding a whole store object to a component.
+* [react-redux/mapStateToProps-prefer-hoisted](docs/rules/mapStateToProps-prefer-hoisted.md) Flags generation of copies of same-by-value but different-by-reference props.
 * [react-redux/mapStateToProps-prefer-parameters-names](docs/rules/mapStateToProps-prefer-parameters-names.md) Enforces that all mapStateToProps parameters have specific names.
 * [react-redux/prefer-separate-component-file](docs/rules/prefer-separate-component-file.md) Enforces that all connected components are defined in a separate file.
