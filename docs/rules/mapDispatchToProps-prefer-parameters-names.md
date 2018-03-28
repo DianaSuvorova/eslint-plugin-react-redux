@@ -25,15 +25,15 @@ const mapDispatchToProps = () => {}
 ```
 
 ```js
-const mapDispatchToProps(dispatch, ownProps) => {}
+const mapDispatchToProps = (dispatch, ownProps) => {}
 ```
 
 ```js
-const mapDispatchToProps(dispatch, {prop1, prop2}) => {}
+const mapDispatchToProps = (dispatch, {prop1, prop2}) => {}
 ```
 
 ```js
-const mapDispatchToProps(dispatch) => {}
+const mapDispatchToProps = (dispatch) => {}
 ```
 
 ```js
