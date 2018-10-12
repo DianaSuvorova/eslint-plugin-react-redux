@@ -49,6 +49,7 @@ To configure individual rules:
 * [react-redux/connect-prefer-minimum-two-arguments](docs/rules/connect-prefer-minimum-two-arguments.md) Enforces that connect function has at least 2 arguments.
 * [react-redux/connect-prefer-named-arguments](docs/rules/connect-prefer-named-arguments.md) Enforces that all connect arguments have recommended names.
 * [react-redux/mapDispatchToProps-returns-object](docs/rules/mapDispatchToProps-returns-object.md) Enforces that mapDispatchToProps returns an object.
+* [react-redux/mapDispatchToProps-prefer-shorthand](docs/rules/mapDispatchToProps-prefer-shorthand.md)  Enforces that all mapDispatchToProps use a shorthand method to wrap actions in dispatch calls whenever possible.
 * [react-redux/mapDispatchToProps-prefer-parameters-names](docs/rules/mapDispatchToProps-prefer-parameters-names.md)  Enforces that all mapDispatchToProps parameters have specific names.
 * [react-redux/mapStateToProps-no-store](docs/rules/mapStateToProps-no-store.md) Prohibits binding a whole store object to a component.
 * [react-redux/mapStateToProps-prefer-hoisted](docs/rules/mapStateToProps-prefer-hoisted.md) Flags generation of copies of same-by-value but different-by-reference props.
