@@ -17,6 +17,40 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('no-unused-prop-types', rule, {
   valid: [
+    `export const mapStateToProps = (state, ownProps) => {
+      const { myProp } = ownProps;
+      return { myData: getMyData(state, myProp)};
+    }
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+
+    `export const mapStateToProps = (state, ownProps) => {
+      const myProp = ownProps.myProp;
+      return { myData: getMyData(state, myProp)};
+    }
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+
     `export const mapStateToProps = (state, ownProps) => ({
       myData: getMyData(state, ownProps.myProp),
     });
@@ -35,6 +69,21 @@ ruleTester.run('no-unused-prop-types', rule, {
 
     `export const mapDispatchToProps = (state, ownProps) => ({
       myData: getMyData(state, ownProps.myProp),
+    });
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+    `export const mapStateToProps = (state, {myProp}) => ({
+      myData: getMyData(state, myProp.z),
     });
 
     export class MyComponent extends Component {
@@ -75,6 +124,75 @@ ruleTester.run('no-unused-prop-types', rule, {
     code: `export const mapStateToProps = (state, ownProps) => ({
       myData: getMyData(state, ownProps.myProp),
     });
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired,
+      notUsedProp:  PropTypes.string.isRequired,
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+
+    errors: [
+      {
+        message: '\'notUsedProp\' PropType is defined but prop is never used',
+      },
+    ],
+  }, {
+    code: `export const mapStateToProps = ({aState}, ownProps) => ({
+      myData: getMyData(aState),
+    });
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+
+    errors: [
+      {
+        message: '\'myProp\' PropType is defined but prop is never used',
+      },
+    ],
+  }, {
+    code: `export const mapStateToProps = (state, {myProp}) => ({
+      myData: getMyData(state, myProp),
+    });
+
+    export class MyComponent extends Component {
+      render() {
+        return <div>{this.props.myData}</div>;
+      }
+    }
+
+    MyComponent.propTypes = {
+      myProp: PropTypes.string.isRequired,
+      notUsedProp:  PropTypes.string.isRequired,
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
+
+    errors: [
+      {
+        message: '\'notUsedProp\' PropType is defined but prop is never used',
+      },
+    ],
+  }, {
+    code: `export const mapStateToProps = (state, ownProps) => {
+      const { myProp } = ownProps;
+      return { myData: getMyData(state, myProp)};
+    }
 
     export class MyComponent extends Component {
       render() {
