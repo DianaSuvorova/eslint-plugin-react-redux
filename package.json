@@ -36,7 +36,7 @@
     "mocha": "^4.0.1",
     "semantic-release": "^12.4.1"
   },
-  "peerDependencies" : {
+  "peerDependencies": {
     "eslint-plugin-react": "^7.11.1"
   },
   "engines": {
@@ -47,6 +47,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "eslint-rule-composer": "^0.3.0"
+    "eslint-rule-composer": "^0.3.0",
+    "eslint-plugin-react": "^7.11.1"
   }
 }
