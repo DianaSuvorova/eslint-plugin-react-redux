@@ -7,6 +7,7 @@ const rules = {
   'mapStateToProps-no-store': require('./lib/rules/mapStateToProps-no-store'),
   'mapStateToProps-prefer-hoisted': require('./lib/rules/mapStateToProps-prefer-hoisted'),
   'mapStateToProps-prefer-parameters-names': require('./lib/rules/mapStateToProps-prefer-parameters-names'),
+  'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
   'prefer-separate-component-file': require('./lib/rules/prefer-separate-component-file'),
 };
 
@@ -34,6 +35,7 @@ module.exports = {
         'react-redux/mapStateToProps-no-store': 2,
         'react-redux/mapStateToProps-prefer-hoisted': 2,
         'react-redux/mapStateToProps-prefer-parameters-names': 2,
+        'react-redux/no-unused-prop-types': 2,
         'react-redux/prefer-separate-component-file': 1,
       },
     },

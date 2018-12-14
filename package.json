@@ -9,12 +9,13 @@
     "react-redux"
   ],
   "author": "diana.suvorova@gmail.com",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "lint": "eslint ./",
-    "test": "npm run lint && mocha tests --recursive",
+    "lint": "eslint ./lib ./tests",
+    "test": "npm run lint && mocha --compilers js:babel-register tests --recursive",
     "semantic-release": "semantic-release",
-    "commitmsg": "npm run test && commitlint -e $GIT_PARAMS"
+    "commitmsg": "npm run test && commitlint -e $GIT_PARAMS",
+    "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,11 @@
   "devDependencies": {
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "eslint": "^4.14.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-standard": "^11.0.0-beta.0",
@@ -31,11 +36,13 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "mocha": "^4.0.1",
     "semantic-release": "^12.4.1"
+  },
+  "peerDependencies": {
+    "eslint-plugin-react": "^7.11.1"
   },
   "engines": {
     "node": ">=6.10.0"
@@ -43,5 +50,9 @@
   "license": "ISC",
   "directories": {
     "test": "tests"
+  },
+  "dependencies": {
+    "eslint-rule-composer": "^0.3.0",
+    "eslint-plugin-react": "^7.11.1"
   }
 }
