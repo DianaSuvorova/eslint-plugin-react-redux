@@ -93,6 +93,14 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
         }
       }
     };`,
+    `const createConnectedToolbarItem = (icon, onClick) => {
+      const mapStateToProps = { onClick }
+
+      connect(
+        null,
+        mapStateToProps
+      )(createToolbarItem(icon))
+    }`,
   ],
   invalid: [{
     code: `const mapStateToProps = (state) => {
