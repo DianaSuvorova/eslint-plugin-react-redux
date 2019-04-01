@@ -1,4 +1,4 @@
-#  Enforces that all mapStateToProps parameters have specific names. (react-redux/mapStateToProps-prefer-named-parameters)
+#  Enforces that all mapStateToProps parameters have specific names. (react-redux/mapStateToProps-prefer-parameters-names)
 
 [react-redux mapStateToProps](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) function has 2 optional arguments:
 * state
