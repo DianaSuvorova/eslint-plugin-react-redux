@@ -1,7 +1,7 @@
 #  Enforces that mapStateToProps does not bind complete store to a component. (react-redux/mapStateToProps-no-store)
 
-Passing whole state to a component is a bd practice. Triggering unnecessary re-renders.
-Instead one should provide specific properties used by a component.
+Passing whole state to a component is a bad practice, triggering unnecessary re-renders.
+Instead one should specify the properties actually used by a component.
 
 ## Rule details
 
@@ -45,7 +45,7 @@ connect((state) => ({isActive: state.isActive}), null)(App)
 
 ## Not supported use cases.
 
-Please note that the following use case although common is not supported due to the nature of static code analysis.
+Please note that the following use case, although common, is not supported due to the nature of static code analysis.
 
 The following would not warn:
 
