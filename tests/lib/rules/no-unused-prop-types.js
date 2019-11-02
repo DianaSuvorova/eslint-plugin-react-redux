@@ -97,6 +97,41 @@ ruleTester.run('no-unused-prop-types', rule, {
     };
 
     export default connect(mapStateToProps)(MyComponent);`,
+    `const selectorFoo = (state) => ({isFetching: false, name: 'Foo', isDeleting: false, deltedId: ''});
+    const selectorBar = (state) => ({ isFetching: false, name: 'Bar'});
+    export const mapStateToProps = (state) => {
+      const { isFetching: isFetchingFoo, ...restFoo } = selectorFoo(state);
+      const { isFetching: isFeatchingBar, ...restBar } = selectorBar(state);
+      return {
+        isFetchingFoo,
+        isFetchingBar,
+        ...restFoo,
+        ...restBar,
+      };
+    };
+      export class MyComponent extends Component {
+      render() {
+          const {isFetchingFoo, name, isFetchingBar, isDeleting, deletedId} = this.props;
+          return (
+            <div>
+              <span>{isFetchingFoo}</span>
+              <span>{isDeleting}</span>
+              <span>{isFetchingBar}</span>
+              <span>{name}{deletedId}</span>
+            </div>
+          )
+      }
+    };
+
+    MyComponent.propTypes = {
+      isFetchingFoo: PropTypes.bool.isRequired,
+      isDeleting: PropTypes.bool.isRequired,
+      deletedId: PropTypes.number.isRequired,
+      name: Proptypes.string.isRequired,
+      isFetchingBar: PropTypes.bool.isRequired,
+    };
+
+    export default connect(mapStateToProps)(MyComponent);`,
   ],
   invalid: [{
     code: `export const mapStateToProps = (state) => ({
