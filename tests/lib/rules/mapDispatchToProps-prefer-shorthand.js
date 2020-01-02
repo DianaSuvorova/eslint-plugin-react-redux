@@ -36,9 +36,6 @@ ruleTester.run('mapDispatchToProps-prefer-shorthand', rule, {
       { fetchProducts }
     )(Products);
     `,
-    `const mapDispatchToProps = dispatch => ({
-      onDoSomething: () => dispatch(toSomethingElse())
-    });`,
     'connect(null, null)(App)',
     'function mapDispatchToProps () {return aThing}',
   ],
@@ -68,6 +65,15 @@ ruleTester.run('mapDispatchToProps-prefer-shorthand', rule, {
                 dispatch(requestFilteredItems(client, keyword))
             };
         }`,
+    errors: [
+      {
+        message: 'mapDispatchToProps should use a shorthand dispatch wrapping instead',
+      },
+    ],
+  }, {
+    code: `const mapDispatchToProps = dispatch => ({
+      onDoSomething: () => dispatch(toSomethingElse()),
+    });`,
     errors: [
       {
         message: 'mapDispatchToProps should use a shorthand dispatch wrapping instead',
