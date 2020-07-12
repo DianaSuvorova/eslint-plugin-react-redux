@@ -44,6 +44,9 @@
   "peerDependencies": {
     "eslint-plugin-react": "^7.16.0"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "license": "ISC",
   "directories": {
     "test": "tests"
