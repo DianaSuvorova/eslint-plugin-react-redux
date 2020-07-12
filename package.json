@@ -54,5 +54,11 @@
   "dependencies": {
     "eslint-rule-composer": "^0.3.0",
     "eslint-plugin-react": "^7.16.0"
+  },
+  "resolutions": {
+    "conventional-changelog-angular": "^1.0.0",
+    "conventional-commits-parser":"^1.0.0",
+    "conventional-changelog-writer":"^1.0.0",
+    "conventional-commits-filter": "^1.0.0"
   }
 }
