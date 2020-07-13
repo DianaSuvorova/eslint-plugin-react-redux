@@ -48,5 +48,47 @@ connect(function(state) {
 ### `matching`
 If provided, validates the name of the selector functions against the RegExp pattern provided.
 
+```js
+    // .eslintrc
+    {
+        "react-redux/mapStateToProps-prefer-selectors": ["error", { matching: "^.*Selector$"}]
+    }
+
+    // container.js
+    const mapStateToProps = (state) => {
+        x: xSelector(state), // success
+        y: selectY(state), // failure
+    }
+```
+
+```js
+    // .eslintrc
+    {
+        "react-redux/mapStateToProps-prefer-selectors": ["error", { matching: "^get.*FromState$"}]
+    }
+
+    // container.js
+    const mapStateToProps = (state) => {
+        x: getXFromState(state), // success
+        y: getY(state), // failure
+    }
+```
+
 ### `validateParams`
-Boolean to determine if the selectors use the correct params (`selectorFunction(state, ownProps)`, where both params are optional). Defaults to true.
+Boolean to determine if the selectors use the correct params (`<selectorFunction>(state, ownProps)`, where both params are optional). Defaults to true.
+
+```js
+    // .eslintrc
+    {
+        "react-redux/mapStateToProps-prefer-selectors": ["error", { validateParams: true }]
+    }
+
+    // container.js
+    const mapStateToProps = (state, ownProps) => {
+        x: xSelector(state), // success
+        y: ySelector(state, ownProps), // sucess
+        z: zSelector(), // success
+        a: aSelector(ownProps, state), // failure
+        b: bSelector(state, someOtherValue) // failure
+    }
+```
