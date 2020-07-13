@@ -157,6 +157,11 @@ ruleTester.run('mapStateToProps-prefer-selectors', rule, {
       message: 'mapStateToProps "x"\'s selector "xSelector" parameter #1 is not expected.',
     }],
   }, {
+    code: 'const mapStateToProps = (state, ownProps) => ({ x: xSelector(state, ownProps, someOtherValue) })',
+    errors: [{
+      message: 'mapStateToProps "x"\'s selector "xSelector" parameter #2 is not expected.',
+    }],
+  }, {
     code: 'const mapStateToProps = function(state) { return { x: getX(notState) }; }',
     errors: [{
       message: 'mapStateToProps "x"\'s selector "getX" parameter #0 should be "state".',
