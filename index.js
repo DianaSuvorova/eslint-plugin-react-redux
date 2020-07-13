@@ -7,6 +7,7 @@ const rules = {
   'mapStateToProps-no-store': require('./lib/rules/mapStateToProps-no-store'),
   'mapStateToProps-prefer-hoisted': require('./lib/rules/mapStateToProps-prefer-hoisted'),
   'mapStateToProps-prefer-parameters-names': require('./lib/rules/mapStateToProps-prefer-parameters-names'),
+  'mapStateToProps-prefer-selectors': require('./lib/rules/mapStateToProps-prefer-selectors'),
   'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
   'prefer-separate-component-file': require('./lib/rules/prefer-separate-component-file'),
 };
