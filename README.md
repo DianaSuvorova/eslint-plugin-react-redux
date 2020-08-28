@@ -55,5 +55,6 @@ To configure individual rules:
 * [react-redux/mapStateToProps-prefer-hoisted](docs/rules/mapStateToProps-prefer-hoisted.md) Flags generation of copies of same-by-value but different-by-reference props.
 * [react-redux/mapStateToProps-prefer-parameters-names](docs/rules/mapStateToProps-prefer-parameters-names.md) Enforces that all mapStateToProps parameters have specific names.
 * [react-redux/mapStateToProps-prefer-selectors](docs/rules/mapStateToProps-prefer-selectors.md) Enforces that all mapStateToProps properties use selector functions. 
+* [react-redux/useSelector-prefer-selectors](docs/rules/useSelector-prefer-selectors.md) Enforces that all useSelector properties use selector functions.
 * [react-redux/no-unused-prop-types](docs/rules/no-unused-prop-types.md) Extension of a react's no-unused-prop-types rule filtering out false positive used in redux context.
 * [react-redux/prefer-separate-component-file](docs/rules/prefer-separate-component-file.md) Enforces that all connected components are defined in a separate file.
