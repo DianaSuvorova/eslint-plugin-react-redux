@@ -28,6 +28,7 @@ module.exports = {
   rules,
   configs: {
     recommended: {
+      plugins: ['react-redux'],
       rules: {
         'react-redux/connect-prefer-minimum-two-arguments': 0,
         'react-redux/connect-prefer-named-arguments': 2,
@@ -43,6 +44,7 @@ module.exports = {
       },
     },
     all: {
+      plugins: ['react-redux'],
       rules: activeRulesConfig,
     },
   },
