@@ -12,9 +12,9 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint ./lib ./tests",
-    "test": "npm run lint && mocha --compilers js:babel-register tests --recursive",
+    "test": "yarn lint && mocha --compilers js:babel-register tests --recursive",
     "semantic-release": "semantic-release",
-    "commitmsg": "npm run test && commitlint -e $GIT_PARAMS",
+    "commitmsg": "yarn test && commitlint -e $GIT_PARAMS",
     "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files"
   },
   "repository": {
@@ -39,7 +39,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "mocha": "^4.0.1",
-    "semantic-release": "^12.4.1"
+    "semantic-release": "^17.2.3"
   },
   "peerDependencies": {
     "eslint-plugin-react": "^7.16.0"
