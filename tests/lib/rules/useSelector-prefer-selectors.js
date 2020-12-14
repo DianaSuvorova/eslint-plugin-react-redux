@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/useSelector-prefer-selectors');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('useSelector-prefer-selectors', rule, {
   valid: [
+    ...codeSamples,
     'const property = useSelector(xSelector)',
     {
       code: 'const property = useSelector(xSelector)',

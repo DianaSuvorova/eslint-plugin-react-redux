@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapStateToProps-no-store');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-no-store', rule, {
   valid: [
+    ...codeSamples,
     ` const mapStateToProps = state => ({
        ...getSomeStateFromASelector(state),
        showDefaultHeader: showDefaultHeader(state),

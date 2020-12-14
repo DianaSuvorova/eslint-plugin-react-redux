@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/connect-prefer-named-arguments');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('connect-prefer-named-arguments', rule, {
   valid: [
+    ...codeSamples,
     'export default connect(null, mapDispatchToProps)(TodoApp)',
     'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
     'connect(mapStateToProps, mapDispatchToProps)(Component)',

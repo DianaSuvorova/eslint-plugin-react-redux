@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapDispatchToProps-prefer-parameters-names');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
   valid: [
+    ...codeSamples,
     'const mapDispatchToProps = (dispatch, ownProps) => {}',
     'const mapDispatchToProps = (dispatch, {prop1, prop2}) => {}',
     'const mapDispatchToProps = (dispatch) => {}',

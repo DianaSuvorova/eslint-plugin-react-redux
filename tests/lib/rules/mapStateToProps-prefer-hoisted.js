@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapStateToProps-prefer-hoisted');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -17,6 +18,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
   valid: [
+    ...codeSamples,
     `function mapStateToProps(state) {
       return {};
     }`,
