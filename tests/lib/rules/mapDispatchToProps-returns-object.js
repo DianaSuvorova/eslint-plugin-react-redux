@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapDispatchToProps-returns-object');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapDispatchToProps-returns-object', rule, {
   valid: [
+    ...codeSamples,
     'const mapDispatchToProps = {}',
     'const mapDispatchToProps = null',
     'const mapDispatchToProps = actionsMap',

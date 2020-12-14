@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -17,6 +18,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('no-unused-prop-types', rule, {
   valid: [
+    ...codeSamples,
     `export const mapStateToProps = (state, ownProps) => {
       const { myProp } = ownProps;
       return { myData: getMyData(state, myProp)};

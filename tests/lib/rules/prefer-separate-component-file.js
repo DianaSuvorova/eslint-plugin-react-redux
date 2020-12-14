@@ -2,6 +2,7 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/prefer-separate-component-file');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +16,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('prefer-separate-component-file', rule, {
   valid: [
+    ...codeSamples,
     ` import Component from './component';
       connect(mapStateToProps, mapDispatchToProps)(Component)`,
     `const Component = require('./component')

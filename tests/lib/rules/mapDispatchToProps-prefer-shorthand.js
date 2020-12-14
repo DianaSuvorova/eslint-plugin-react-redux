@@ -2,6 +2,8 @@ require('babel-eslint');
 
 const rule = require('../../../lib/rules/mapDispatchToProps-prefer-shorthand');
 const RuleTester = require('eslint').RuleTester;
+const codeSamples = require('../../code-sanity-samples');
+
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -15,6 +17,7 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('mapDispatchToProps-prefer-shorthand', rule, {
   valid: [
+    ...codeSamples,
     'function mapDispatchToProps () {return {action}}',
     `const mapDispatchToProps = dispatch => ({
       onDoSomething: function() {return dispatch(toDo())},
