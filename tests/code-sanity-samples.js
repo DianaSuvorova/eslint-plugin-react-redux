@@ -6,4 +6,7 @@ module.exports = [
         }
       }
   `,
+  `const mapStateToProps = () => {
+    return;
+  };`,
 ];
