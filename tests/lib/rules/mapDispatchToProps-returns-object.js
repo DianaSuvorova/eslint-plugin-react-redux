@@ -95,3 +95,95 @@ ruleTester.run('mapDispatchToProps-returns-object', rule, {
     ],
   }],
 });
+
+ruleTester.run('mapDispatchToProps-returns-object-allowReturnBindFn', rule, {
+  valid: [
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `function mapDispatchToProps(dispatch) {
+        return bindActionCreators(
+          {
+            requestFilteredItems,
+            showAlert: showAlertAction,
+          },
+          dispatch
+        );
+      }`,
+    },
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `const mapDispatchToProps = (dispatch) => {
+        return bindActionCreators(
+          {
+            requestFilteredItems,
+            showAlert: showAlertAction,
+          },
+          dispatch
+        );
+      }`,
+    },
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `const mapDispatchToProps = (dispatch) =>
+        bindActionCreators(
+          {
+            requestFilteredItems,
+            showAlert: showAlertAction,
+          },
+          dispatch
+        );
+      `,
+    },
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `export default connect(
+        state => ({
+          productsList: state.Products.productsList,
+        }),
+        function (dispatch) {
+          return bindActionCreators(
+            {
+              requestFilteredItems,
+              showAlert: showAlertAction,
+            },
+            dispatch
+          )
+        }
+      )(Products);`,
+    },
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `export default connect(
+        state => ({
+          productsList: state.Products.productsList,
+        }),
+        (dispatch) => {
+          return bindActionCreators(
+            {
+              requestFilteredItems,
+              showAlert: showAlertAction,
+            },
+            dispatch
+          )
+        }
+      )(Products);`,
+    },
+    {
+      options: [{ allowReturnBindFn: true }],
+      code: `export default connect(
+        state => ({
+          productsList: state.Products.productsList,
+        }),
+        (dispatch) =>
+          bindActionCreators(
+            {
+              requestFilteredItems,
+              showAlert: showAlertAction,
+            },
+            dispatch
+          )
+      )(Products);`,
+    },
+  ],
+  invalid: [],
+});

@@ -39,6 +39,30 @@ const mapDispatchToProps = {anAction: anAction}
 const mapDispatchToProps = (dispatch) => ({anAction: dispatch(anAction())})
 ```
 
+## Options
+
+### allowReturnBindFn
+Rule example
+```js
+{
+  'react-redux/mapDispatchToProps-returns-object': ['error', { allowReturnBindFn: true }],
+}
+```
+
+If this option is set to true, return the result of `bindActionCreators` considered to be valid:
+
+```js
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      requestFilteredItems,
+      showAlert: showAlertAction,
+    },
+    dispatch
+  );
+}
+```
+
 ## Not supported use cases.
 
 #### mapDispatchToProps is a function but actions are not bound to dispatch
