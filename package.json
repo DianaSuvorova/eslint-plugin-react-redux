@@ -9,7 +9,7 @@
     "react-redux"
   ],
   "author": "diana.suvorova@gmail.com",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint ./lib ./tests",
     "test": "npm run lint && mocha --compilers js:babel-register tests --recursive",
