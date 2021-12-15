@@ -15,7 +15,8 @@
     "test": "npm run lint && mocha --compilers js:babel-register tests --recursive",
     "semantic-release": "semantic-release",
     "commitmsg": "npm run test && commitlint -e $GIT_PARAMS",
-    "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files"
+    "build": "rm -fr ./dist && babel ./src --out-dir ./dist --copy-files",
+    "prepublishOnly": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",
