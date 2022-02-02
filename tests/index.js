@@ -1,4 +1,4 @@
-const plugin = require('..');
+const plugin = require('../lib/index');
 
 const assert = require('assert');
 const fs = require('fs');
