@@ -29,6 +29,7 @@
     "babel-register": "^6.26.0",
     "eslint": "^8.8.0",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^5.2.1",
@@ -50,7 +51,6 @@
     "test": "tests"
   },
   "dependencies": {
-    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-rule-composer": "^0.3.0"
   }
