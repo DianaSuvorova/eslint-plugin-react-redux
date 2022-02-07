@@ -40,6 +40,7 @@
     "semantic-release": "^17.2.3"
   },
   "peerDependencies": {
+    "eslint-plugin-react": "^7.28.0",
     "eslint": "^7 || ^8"
   },
   "engines": {
