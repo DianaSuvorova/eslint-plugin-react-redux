@@ -1,15 +1,10 @@
-require('babel-eslint');
-
 const rule = require('../../../lib/rules/mapDispatchToProps-prefer-parameters-names');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    experimentalObjectRestSpread: true,
-  },
 };
 
 const ruleTester = new RuleTester({ parserOptions });
