@@ -37,7 +37,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^7.0.4",
     "mocha": "^9.2.0",
-    "semantic-release": "^17.2.3"
+    "semantic-release": "^19.0.3"
   },
   "peerDependencies": {
     "eslint-plugin-react": "^7.28.0",
