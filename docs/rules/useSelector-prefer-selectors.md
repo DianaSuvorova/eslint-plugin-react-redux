@@ -50,10 +50,24 @@ If provided, validates the name of the selector functions against the RegExp pat
 ```js
     // .eslintrc
     {
-        "react-redux/mapStateToProps-prefer-selectors": ["error", { matching: "^get.*FromState$"}]
+        "react-redux/useSelector-prefer-selectors": ["error", { matching: "^get.*FromState$"}]
     }
 
     // container.js
     const propertyA = useSelector(getAFromState) // success
     const propertyB = useSelector(getB) // failure
+```
+
+### `hook`
+
+Sets the name of the `useSelector` function to target. The value can also be an array of strings. Defaults to `['useSelector', 'useAppSelector']`.
+
+```js
+    // .eslintrc
+{
+    "react-redux/useSelector-prefer-selectors": ["error", { hook: 'useAppSelector' }]
+}
+
+// container.js
+const property = useAppSelector(state => state.mydata) // failure
 ```

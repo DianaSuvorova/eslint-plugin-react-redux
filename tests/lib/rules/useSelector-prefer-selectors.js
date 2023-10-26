@@ -31,6 +31,13 @@ ruleTester.run('useSelector-prefer-selectors', rule, {
         matching: '^selector$',
       }],
     },
+    {
+      code: 'const property = useAppSelector(selector)',
+      options: [{
+        matching: '^selector$',
+        hook: 'useAppSelector',
+      }],
+    },
   ],
   invalid: [{
     code: 'const property = useSelector((state) => state.x)',
@@ -67,6 +74,15 @@ ruleTester.run('useSelector-prefer-selectors', rule, {
     }],
     errors: [{
       message: 'useSelector selector "selectorr" does not match "^selector$".',
+    }],
+  }, {
+    code: 'const property = useAppSelector(selectorr)',
+    options: [{
+      matching: '^selector$',
+      hook: ['useSelector', 'useAppSelector'],
+    }],
+    errors: [{
+      message: 'useAppSelector selector "selectorr" does not match "^selector$".',
     }],
   }],
 });
