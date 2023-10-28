@@ -28,7 +28,6 @@ function Component() {
 ...
 "react-redux/useSelector-prefer-selectors": [<enabled>, {
   "matching": <string>
-  "validateParams": <boolean>
 }]
 ...
 ```
