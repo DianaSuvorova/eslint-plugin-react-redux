@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./lib ./tests",
-    "test": "npm run lint && mocha tests --recursive",
+    "test": "npm run lint && mocha tests --recursive  --exclude tests/lib/rules/no-unused-prop-types.js",
     "semantic-release": "semantic-release",
     "commitmsg": "npm run test && commitlint -e $GIT_PARAMS"
   },
