@@ -4,13 +4,15 @@ const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
+  languageOptions:  { 
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  }
 };
 
 const errorMessage = 'constant arrays and objects should be initialized outside of mapStateToProps';
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester(parserOptions);
 
 ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
   valid: [

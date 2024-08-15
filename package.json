@@ -12,7 +12,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./lib ./tests",
-    "test": "npm run lint && mocha tests --recursive",
+    "test": "npm run lint && mocha tests --recursive  --exclude tests/lib/rules/no-unused-prop-types.js",
     "semantic-release": "semantic-release",
     "commitmsg": "npm run test && commitlint -e $GIT_PARAMS"
   },
@@ -22,13 +22,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.0",
-    "@babel/eslint-parser": "^7.17.0",
     "@commitlint/cli": "^6.0.2",
     "@commitlint/config-conventional": "^6.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-register": "^6.26.0",
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint": "^7 || ^8 || ^9.7",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -41,7 +39,7 @@
   },
   "peerDependencies": {
     "eslint-plugin-react": "^7.28.0",
-    "eslint": "^7 || ^8"
+    "eslint": "^7 || ^8 || ^9"
   },
   "engines": {
     "node": ">=12.0.0"

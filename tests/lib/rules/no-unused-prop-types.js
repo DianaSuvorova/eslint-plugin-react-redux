@@ -4,15 +4,19 @@ const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
 
 const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
-  },
+  languageOptions:  { 
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    parserOptions: {
+      ecmaFeatures: {
+          jsx: true
+      }
+    }
+  }
 };
 
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester(parserOptions);
 
 ruleTester.run('no-unused-prop-types', rule, {
   valid: [
