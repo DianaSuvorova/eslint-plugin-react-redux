@@ -1,13 +1,12 @@
 const rule = require('../../../lib/rules/useSelector-prefer-selectors');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  languageOptions:  { 
+const parserOptions = formatOptions({
     ecmaVersion: 2018,
     sourceType: 'module',
-  }
-};
+});
 const ruleTester = new RuleTester(parserOptions);
 
 ruleTester.run('useSelector-prefer-selectors', rule, {

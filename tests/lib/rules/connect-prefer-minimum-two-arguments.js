@@ -1,13 +1,12 @@
 const rule = require('../../../lib/rules/connect-prefer-minimum-two-arguments');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  languageOptions:  { 
+const parserOptions = formatOptions({
     ecmaVersion: 2018,
     sourceType: 'module',
-  }
-};
+});
 
 const ruleTester = new RuleTester( parserOptions );
 
@@ -16,7 +15,7 @@ ruleTester.run('connect-prefer-minimum-two-arguments', rule, {
     ...codeSamples,
     'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
     'connect(mapStateToProps, mapDispatchToProps)(Component)',
-    'connect({prop1, prop2}, {action1, action2})(Component)',
+    'connect({prop1, prop2}), ({action1, action2})(Component)',
   ],
   invalid: [{
     code: 'connect(mapStateToProps)(Component)',
