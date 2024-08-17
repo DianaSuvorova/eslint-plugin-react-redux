@@ -26,7 +26,7 @@
     "@commitlint/config-conventional": "^6.0.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-register": "^6.26.0",
-    "eslint": "^8",
+    "eslint": "^8 || ^9",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
@@ -38,7 +38,7 @@
     "semantic-release": "^17.2.3"
   },
   "peerDependencies": {
-    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react": "^7.35.0",
     "eslint": "^7 || ^8 || ^9.7"
   },
   "engines": {
@@ -49,7 +49,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react": "^7.35.0",
     "eslint-rule-composer": "^0.3.0"
   }
 }
