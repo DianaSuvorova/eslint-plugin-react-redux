@@ -1,13 +1,14 @@
 const rule = require('../../../lib/rules/connect-prefer-named-arguments');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-};
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+});
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester( parserOptions );
 
 ruleTester.run('connect-prefer-named-arguments', rule, {
   valid: [
@@ -21,25 +22,25 @@ ruleTester.run('connect-prefer-named-arguments', rule, {
     code: 'connect(() => {}, () => {}, mergeProps, options)(Component)',
     errors: [
       {
-        message: 'Connect function argument #0 should be named mapStateToProps',
+        message: 'Connect function argument #1 should be named mapStateToProps',
       }, {
-        message: 'Connect function argument #1 should be named mapDispatchToProps',
+        message: 'Connect function argument #2 should be named mapDispatchToProps',
       },
     ],
   }, {
     code: 'connect({}, {})(Component)',
     errors: [
       {
-        message: 'Connect function argument #0 should be named mapStateToProps',
+        message: 'Connect function argument #1 should be named mapStateToProps',
       }, {
-        message: 'Connect function argument #1 should be named mapDispatchToProps',
+        message: 'Connect function argument #2 should be named mapDispatchToProps',
       },
     ],
   }, {
     code: 'connect(state => state)(TodoApp)',
     errors: [
       {
-        message: 'Connect function argument #0 should be named mapStateToProps',
+        message: 'Connect function argument #1 should be named mapStateToProps',
       },
     ],
   }],

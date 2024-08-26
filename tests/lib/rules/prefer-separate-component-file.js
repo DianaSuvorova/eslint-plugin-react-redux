@@ -1,13 +1,13 @@
 const rule = require('../../../lib/rules/prefer-separate-component-file');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-};
-
-const ruleTester = new RuleTester({ parserOptions });
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+});
+const ruleTester = new RuleTester(parserOptions);
 
 ruleTester.run('prefer-separate-component-file', rule, {
   valid: [

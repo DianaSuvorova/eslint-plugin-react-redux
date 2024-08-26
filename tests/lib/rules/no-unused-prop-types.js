@@ -2,17 +2,18 @@
 const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
-  },
-};
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    ecmaFeatures: {
+        jsx: true
+    }
+});
 
-
-const ruleTester = new RuleTester({ parserOptions });
+console.log(parserOptions);
+const ruleTester = new RuleTester(parserOptions);
 
 ruleTester.run('no-unused-prop-types', rule, {
   valid: [

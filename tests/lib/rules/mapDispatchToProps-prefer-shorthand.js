@@ -1,14 +1,14 @@
 const rule = require('../../../lib/rules/mapDispatchToProps-prefer-shorthand');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+});
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-};
-
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester( parserOptions );
 
 ruleTester.run('mapDispatchToProps-prefer-shorthand', rule, {
   valid: [

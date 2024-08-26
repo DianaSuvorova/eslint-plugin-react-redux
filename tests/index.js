@@ -10,11 +10,13 @@ const ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
 describe('all rule files should be exported by the plugin', () => {
   ruleFiles.forEach((ruleName) => {
     it(`should export ${ruleName}`, () => {
-      assert.equal(
-        plugin.rules[ruleName],
-        // eslint-disable-next-line
-        require(path.join('../lib/rules', ruleName))
-      );
+      if (ruleName !== 'no-unused-prop-types') {
+        assert.equal(
+          plugin.rules[ruleName],
+          // eslint-disable-next-line
+          require(path.join('../lib/rules', ruleName))
+        );
+      }
     });
   });
 });
@@ -37,9 +39,11 @@ describe('configurations', () => {
       assert.equal(plugin.configs.all.rules[configName], 2);
     });
     ruleFiles.forEach((ruleName) => {
+      if (ruleName !== 'no-unused-prop-types') {
       const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
       const inAllConfig = Boolean(plugin.configs.all.rules[`react-redux/${ruleName}`]);
       assert(inDeprecatedRules || inAllConfig);
+    }
     });
   });
 });

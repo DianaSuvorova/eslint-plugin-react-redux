@@ -13,7 +13,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [18.x, 20.x]
+        eslint-version: [8.x, 9.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +22,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - name: Install ESLint ${{ matrix.eslint-version }}
+      run: npm install eslint@${{ matrix.eslint-version }}
+    - run: npm install --force
     - run: npm test
       env:
         CI: true

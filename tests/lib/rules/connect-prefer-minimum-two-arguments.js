@@ -1,13 +1,14 @@
 const rule = require('../../../lib/rules/connect-prefer-minimum-two-arguments');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-};
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+});
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester( parserOptions );
 
 ruleTester.run('connect-prefer-minimum-two-arguments', rule, {
   valid: [

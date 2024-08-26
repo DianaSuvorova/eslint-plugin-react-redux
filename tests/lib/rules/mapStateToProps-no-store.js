@@ -2,16 +2,19 @@
 const rule = require('../../../lib/rules/mapStateToProps-no-store');
 const RuleTester = require('eslint').RuleTester;
 const codeSamples = require('../../code-sanity-samples');
+const formatOptions = require('../../util');
 
-const parserOptions = {
-  ecmaVersion: 2018,
-  sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
-  },
-};
+const parserOptions = formatOptions({
+    ecmaVersion: 2018,
+    sourceType: 'module',
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
+        }
+    }
+});
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester( parserOptions );
 
 ruleTester.run('mapStateToProps-no-store', rule, {
   valid: [
@@ -26,7 +29,6 @@ ruleTester.run('mapStateToProps-no-store', rule, {
       });
     `,
     'export default function observeStore(store) {return store;}',
-    'export default connect(() => {})(Alert)',
     'export default connect(() => {})(Alert)',
     'export default connect(null, null)(Alert)',
     'connect((state) => ({isActive: state.isActive}), null)(App)',
