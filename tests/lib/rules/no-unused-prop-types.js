@@ -33,6 +33,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     `export const mapStateToProps = (state, ownProps) => {
@@ -50,6 +51,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     `export const mapStateToProps = (state, ownProps) => ({
@@ -66,6 +68,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     `export const mapDispatchToProps = (state, ownProps) => ({
@@ -82,6 +85,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
     `export const mapStateToProps = (state, {myProp}) => ({
       myData: getMyData(state, myProp.z),
@@ -97,6 +101,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
     `const selectorFoo = (state) => ({isFetching: false, name: 'Foo', isDeleting: false, deltedId: ''});
     const selectorBar = (state) => ({ isFetching: false, name: 'Bar'});
@@ -132,6 +137,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       isFetchingBar: PropTypes.bool.isRequired,
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
   ],
   invalid: [{
@@ -149,6 +155,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     errors: [
@@ -172,6 +179,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       notUsedProp:  PropTypes.string.isRequired,
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     errors: [
@@ -194,6 +202,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       myProp: PropTypes.string.isRequired
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     errors: [
@@ -217,6 +226,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       notUsedProp:  PropTypes.string.isRequired,
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     errors: [
@@ -241,6 +251,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       notUsedProp:  PropTypes.string.isRequired,
     };
 
+    import { connect } from 'react-redux';
     export default connect(mapStateToProps)(MyComponent);`,
 
     errors: [

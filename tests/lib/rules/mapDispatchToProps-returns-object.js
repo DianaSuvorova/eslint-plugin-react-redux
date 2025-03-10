@@ -17,7 +17,8 @@ ruleTester.run('mapDispatchToProps-returns-object', rule, {
     'const mapDispatchToProps = actionsMap',
     'const mapDispatchToProps = {...actions}',
     'const mapDispatchToProps = {anAction: anAction}',
-    `export default connect(
+    `import { connect } from 'react-redux';
+    export default connect(
       state => ({
         productsList: state.Products.productsList,
       }),
@@ -42,7 +43,7 @@ ruleTester.run('mapDispatchToProps-returns-object', rule, {
           }
         }
     }`,
-    'connect(null, null)(App)',
+    `import { connect } from 'react-redux'; connect(null, null)(App)`,
     'function mapDispatchToProps () {return aThing}',
     `function mapDispatchToProps(dispatch) {
       return { actions: bindActionCreators(actionCreators, dispatch) }
@@ -63,7 +64,8 @@ ruleTester.run('mapDispatchToProps-returns-object', rule, {
       },
     ],
   }, {
-    code: `export default connect(
+    code: `import { connect } from 'react-redux';
+            export default connect(
               state => ({
                 productsList: state.Products.productsList,
               }),
@@ -76,7 +78,8 @@ ruleTester.run('mapDispatchToProps-returns-object', rule, {
       },
     ],
   }, {
-    code: `export default connect(
+    code: `import { connect } from 'react-redux';
+            export default connect(
               state => ({
                 productsList: state.Products.productsList,
               }),

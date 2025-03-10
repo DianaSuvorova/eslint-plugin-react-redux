@@ -27,14 +27,15 @@ ruleTester.run('mapDispatchToProps-prefer-shorthand', rule, {
     'const mapDispatchToProps = actionsMap',
     'const mapDispatchToProps = {...actions}',
     'const mapDispatchToProps = {anAction: anAction}',
-    `export default connect(
+    `import { connect } from 'react-redux';
+    export default connect(
       state => ({
         productsList: state.Products.productsList,
       }),
       { fetchProducts }
     )(Products);
     `,
-    'connect(null, null)(App)',
+    `import { connect } from 'react-redux'; connect(null, null)(App)`,
     'function mapDispatchToProps () {return aThing}',
   ],
   invalid: [{

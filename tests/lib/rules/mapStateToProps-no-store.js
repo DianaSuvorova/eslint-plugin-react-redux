@@ -29,11 +29,12 @@ ruleTester.run('mapStateToProps-no-store', rule, {
       });
     `,
     'export default function observeStore(store) {return store;}',
-    'export default connect(() => {})(Alert)',
-    'export default connect(null, null)(Alert)',
-    'connect((state) => ({isActive: state.isActive}), null)(App)',
-    'connect(null, null)(App)',
-    `connect(
+    `import { connect } from 'react-redux'; export default connect(() => {})(Alert)`,
+    `import { connect } from 'react-redux'; export default connect(null, null)(Alert)`,
+    `import { connect } from 'react-redux'; connect((state) => ({isActive: state.isActive}), null)(App)`,
+    `import { connect } from 'react-redux'; connect(null, null)(App)`,
+    `import { connect } from 'react-redux';
+        connect(
           (state) => {
               return {
                   isActive: state.isActive
@@ -42,7 +43,8 @@ ruleTester.run('mapStateToProps-no-store', rule, {
           null
         )(App)
     `,
-    `connect(function(state){
+    `import { connect } from 'react-redux';
+        connect(function(state){
               return {
                   isActive: state.isActive
               }
@@ -58,14 +60,15 @@ ruleTester.run('mapStateToProps-no-store', rule, {
     }`,
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {isActive: state.isActive}',
-    `const mapStateToProps = (state, ownProps) => {};
+    `import { connect } from 'react-redux';
+      const mapStateToProps = (state, ownProps) => {};
       connect(mapStateToProps, null)(Alert);`,
     `const mapStateToProps = ({ header }) => ({
       isLoggedIn: header.user && header.user.isLoggedIn,
     }); `,
     'const mapStateToProps = ({header}, ownProps) => {header};',
-    'connect(({header}, ownProps) => {header})(App);',
-    'connect(({header}, {ownProp1}) => {header, ownProp1})(App);',
+    `import { connect } from 'react-redux'; connect(({header}, ownProps) => {header})(App);`,
+    `import { connect } from 'react-redux'; connect(({header}, {ownProp1}) => {header, ownProp1})(App);`,
   ],
   invalid: [{
     code: 'const mapStateToProps = (state) => state',
@@ -93,7 +96,8 @@ ruleTester.run('mapStateToProps-no-store', rule, {
       },
     ],
   }, {
-    code: `export default connect(
+    code: `import { connect } from 'react-redux';
+    export default connect(
         (state) => {
             return {
                 state: state
@@ -111,14 +115,15 @@ ruleTester.run('mapStateToProps-no-store', rule, {
       },
     ],
   }, {
-    code: 'connect((state) => state, null)(App)',
+    code: `import { connect } from 'react-redux'; connect((state) => state, null)(App)`,
     errors: [
       {
         message: 'mapStateToProps should not return complete store object',
       },
     ],
   }, {
-    code: `const mapStateToProps = (state, ownProps) => state;
+    code: `import { connect } from 'react-redux';
+      const mapStateToProps = (state, ownProps) => state;
       connect(mapStateToProps, null)(Alert);`,
     errors: [
       {
@@ -133,7 +138,7 @@ ruleTester.run('mapStateToProps-no-store', rule, {
       },
     ],
   }, {
-    code: 'connect((state) => ({...state}), null)(App)',
+    code: `import { connect } from 'react-redux'; connect((state) => ({...state}), null)(App)`,
     errors: [
       {
         message: 'mapStateToProps should not return complete store object',

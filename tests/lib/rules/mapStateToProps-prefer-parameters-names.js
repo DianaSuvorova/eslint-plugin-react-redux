@@ -16,11 +16,11 @@ ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {}',
     'const mapStateToProps = (state, ownProps, moreArgs) => {}',
-    'connect((state) => state, null)(App)',
+    `import { connect } from 'react-redux'; connect((state) => state, null)(App)`,
     'function mapStateToProps(state, ownProps) {}',
-    'connect({state}, null)(App)',
+    `import { connect } from 'react-redux'; connect({state}, null)(App)`,
     'const mapStateToProps = {}',
-    'connect(null, null)(App)',
+    `import { connect } from 'react-redux'; connect(null, null)(App)`,
     'const mapStateToProps = ({prop1, prop2}, ownProps) => {}',
   ],
   invalid: [{
@@ -40,7 +40,7 @@ ruleTester.run('mapStateToProps-prefer-parameters-names', rule, {
       },
     ],
   }, {
-    code: 'connect(function(anyOtherName) {}, null)(App)',
+    code: `import { connect } from 'react-redux'; connect(function(anyOtherName) {}, null)(App)`,
     errors: [
       {
         message: 'mapStateToProps function parameter #0 should be named state',

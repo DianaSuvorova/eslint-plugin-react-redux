@@ -13,13 +13,16 @@ const ruleTester = new RuleTester( parserOptions );
 ruleTester.run('connect-prefer-named-arguments', rule, {
   valid: [
     ...codeSamples,
-    'export default connect(null, mapDispatchToProps)(TodoApp)',
-    'connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)',
-    'connect(mapStateToProps, mapDispatchToProps)(Component)',
-    'connect()(TodoApp)',
+    `import { connect } from 'react-redux'; export default connect(null, mapDispatchToProps)(TodoApp)`,
+    `import { connect } from 'react-redux'; connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(Component)`,
+    `import { connect } from 'react-redux'; connect(mapStateToProps, mapDispatchToProps)(Component)`,
+    `import { connect } from 'react-redux'; connect()(TodoApp)`,
+    'connect(() => {}, () => {}, mergeProps, options)(Component)',
+    'connect({}, {})(Component)',
+    'connect(state => state)(TodoApp)',
   ],
   invalid: [{
-    code: 'connect(() => {}, () => {}, mergeProps, options)(Component)',
+    code: `import { connect } from 'react-redux'; connect(() => {}, () => {}, mergeProps, options)(Component)`,
     errors: [
       {
         message: 'Connect function argument #1 should be named mapStateToProps',
@@ -28,7 +31,7 @@ ruleTester.run('connect-prefer-named-arguments', rule, {
       },
     ],
   }, {
-    code: 'connect({}, {})(Component)',
+    code: `import { connect } from 'react-redux'; connect({}, {})(Component)`,
     errors: [
       {
         message: 'Connect function argument #1 should be named mapStateToProps',
@@ -37,7 +40,7 @@ ruleTester.run('connect-prefer-named-arguments', rule, {
       },
     ],
   }, {
-    code: 'connect(state => state)(TodoApp)',
+    code: `import { connect } from 'react-redux'; connect(state => state)(TodoApp)`,
     errors: [
       {
         message: 'Connect function argument #1 should be named mapStateToProps',
