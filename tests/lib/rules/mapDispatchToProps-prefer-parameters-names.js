@@ -21,6 +21,8 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
     `import { connect } from 'react-redux'; connect((state) => state, {anAction: anAction})(App)`,
     `import { connect } from 'react-redux'; connect(null, null)(App)`,
     `import { connect } from 'react-redux'; connect((state) => state, (dispatch, ownProps, moreArgs) => {})(App)`,
+    `import { connect } from './path/to/connect.js'; connect('something')`,
+    `import { connect } from './path/to/connect.js'; connect((state) => state, (anyOtherName) => {})(App)`,
     'function mapDispatchToProps(dispatch, ownProps) {}',
   ],
   invalid: [{
@@ -48,6 +50,13 @@ ruleTester.run('mapDispatchToProps-prefer-parameters-names', rule, {
     ],
   }, {
     code: `import { connect } from 'react-redux'; connect((state) => state, (anyOtherName) => {})(App)`,
+    errors: [
+      {
+        message: 'mapDispatchToProps function parameter #0 should be named dispatch',
+      },
+    ],
+  }, {
+    code: `const { connect } = require('react-redux'); connect((state) => state, (anyOtherName) => {})(App)`,
     errors: [
       {
         message: 'mapDispatchToProps function parameter #0 should be named dispatch',
