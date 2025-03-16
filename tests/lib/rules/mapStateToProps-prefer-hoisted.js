@@ -50,10 +50,11 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
       };
     };
     `,
-    'export default connect(null, null)(Alert)',
-    'connect((state) => ({isActive: state.isActive}), null)(App)',
-    'connect(null, null)(App)',
-    `connect(
+    `import { connect } from 'react-redux'; export default connect(null, null)(Alert)`,
+    `import { connect } from 'react-redux'; connect((state) => ({isActive: state.isActive}), null)(App)`,
+    `import { connect } from 'react-redux'; connect(null, null)(App)`,
+    `import { connect } from 'react-redux';
+        connect(
           (state) => {
               return {
                   isActive: state.isActive
@@ -62,7 +63,8 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
           null
         )(App)
     `,
-    `connect(function(state){
+    `import { connect } from 'react-redux';
+        connect(function(state){
               return {
                   isActive: state.isActive
               }
@@ -77,14 +79,15 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
     }`,
     'const mapStateToProps = (state, ownProps) => {}',
     'const mapStateToProps = (state) => {set: [1, 2, 3, state.a]}',
-    `const mapStateToProps = (state, ownProps) => {};
+    `import { connect } from 'react-redux';
+      const mapStateToProps = (state, ownProps) => {};
       connect(mapStateToProps, null)(Alert);`,
     `const mapStateToProps = ({ header }) => ({
       isLoggedIn: header.user && header.user.isLoggedIn,
     }); `,
     'const mapStateToProps = ({header}, ownProps) => {header};',
-    'connect(({header}, ownProps) => {header})(App);',
-    'connect(({header}, {ownProp1}) => {header, ownProp1})(App);',
+    `import { connect } from 'react-redux'; connect(({header}, ownProps) => {header})(App);`,
+    `import { connect } from 'react-redux'; connect(({header}, {ownProp1}) => {header, ownProp1})(App);`,
     `const mapStateToProps = ({header}, ownProps) => {
       return {
         props: {
@@ -92,7 +95,8 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
         }
       }
     };`,
-    `const createConnectedToolbarItem = (icon, onClick) => {
+    `import { connect } from 'react-redux';
+    const createConnectedToolbarItem = (icon, onClick) => {
       const mapStateToProps = { onClick }
 
       connect(
@@ -137,7 +141,8 @@ ruleTester.run('mapStateToProps-prefer-hoisted', rule, {
       },
     ],
   }, {
-    code: `export default connect(
+    code: `import { connect } from 'react-redux';
+    export default connect(
         (state) => {
             return {
                 a: {

@@ -12,15 +12,19 @@ const ruleTester = new RuleTester(parserOptions);
 ruleTester.run('prefer-separate-component-file', rule, {
   valid: [
     ...codeSamples,
-    ` import Component from './component';
+    `import { connect } from 'react-redux';
+      import Component from './component';
       connect(mapStateToProps, mapDispatchToProps)(Component)`,
-    `const Component = require('./component')
-     connect(mapStateToProps, mapDispatchToProps)(Component)`,
-    `import {Component} from './component';
-       connect(mapStateToProps, mapDispatchToProps)(Component)`,
+    `import { connect } from 'react-redux';
+      const Component = require('./component')
+      connect(mapStateToProps, mapDispatchToProps)(Component)`,
+    `import { connect } from 'react-redux';
+      import {Component} from './component';
+      connect(mapStateToProps, mapDispatchToProps)(Component)`,
   ],
   invalid: [{
-    code: `const Component = () => {};
+    code: `import { connect } from 'react-redux';
+          const Component = () => {};
           connect(mapStateToProps, null)(Component)`,
     errors: [
       {
