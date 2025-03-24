@@ -7,6 +7,7 @@ module.exports = {
   "rules": {
     "func-names": 0,
     "global-require": 0,
+    "no-undef": "error",
     "prefer-destructuring": 0,
     "strict": 0,
     // Include rules from airbnb configuration directly here
@@ -14,8 +15,12 @@ module.exports = {
   },
   "languageOptions": {
     "globals": {
-      // Define global variables here for your files
-      "mocha": true
+      __dirname: true,
+      console: true,
+      describe: true,
+      it: true,
+      module: true,
+      require: true,
     }
-  }
+  },
 };
